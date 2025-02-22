@@ -26,10 +26,6 @@ password:{
     required:[true,"Password is required"]
 },
 
-refreshToken:{
-    type:String
-}
-
 
 },{
     
@@ -58,18 +54,6 @@ userSchema.methods.generateAccessToken = function(){
             fullName: this.fullName
         },
         process.env.ACCESS_TOKEN_SECRET,
-        {
-            expiresIn:process.env.ACCESS_TOKEN_EXPIRY
-        }
-    )
-}
-
-userSchema.methods.generateRefreshToken=function(){
-    return jwt.sign(
-        {
-            _id:this._id,
-        },
-        process.env.REFRESH_TOKEN_SECRET,
         {
             expiresIn:process.env.ACCESS_TOKEN_EXPIRY
         }
