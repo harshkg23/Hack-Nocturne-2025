@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import Header from './components/header/Header'
+import Footer from './components/footer/Footer'
+import Landing from './pages/Landing/Landing'
 
 
 function App() {
@@ -6,7 +9,9 @@ function App() {
 
   return (
     <>
-      <h1 className='bg-green-100'>hello</h1>
+      <Header/>
+      <Landing/>
+      <Footer/>
     </>
   )
 }
