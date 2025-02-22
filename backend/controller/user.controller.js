@@ -3,21 +3,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import validator from "validator";
 
-const generateAccessAndRefreshTokens= async(userId)=>{
-    try {
-        const user = await User.findById(userId)
-        const accessToken = user.generateAccessToken()
-        const refreshToken = user.generateRefreshToken()
-
-        user.refreshToken= refreshToken
-        await user.save({validateBeforeSave: false })
-
-        return {accessToken, refreshToken}
-
-    } catch (error) {
-        throw new ApiError(500,"Something went wrong while generating refresh and access token")
-    }
-}
 
 // Create a new user
 
@@ -62,7 +47,8 @@ const registerUser = async (req, res) => {
         const token = createToken(user._id);
         return res.json({
             message: "User registered successfully",
-            success: true
+            success: true,
+            token
         })
     } catch (error) {
         console.error("Error in registerUser", error);
@@ -75,3 +61,71 @@ const registerUser = async (req, res) => {
 }
 
 //login user
+
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({
+            email
+        })
+        if (!user) {
+            return res.json({
+                message: "User not found",
+                success: false
+            })
+        }
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        if (!isPasswordCorrect) {
+            return res.json({
+                message: "Password is incorrect",
+                success: false
+            })
+        }
+
+        const token = createToken(user._id);
+
+        return res.json({
+            message: "User logged in successfully",
+            success: true,
+            token
+        })
+    } catch (error) {
+        console.error("Error in loginUser", error);
+        return res.json({
+            message: "Internal server error",
+            success: false
+        })
+    }
+
+}
+
+//logout user
+
+const logoutUser = async (req, res) => {
+    const { userId } = req.body;
+    try {
+        const user = await
+            User.findById(userId);
+        if (!user) {
+            return res.json({
+                message: "User not found",
+                success: false
+            })
+        }
+        user.token = null;
+        await user.save();
+        return res.json({
+            message: "User logged out successfully",
+            success: true
+        })
+    }
+    catch (error) {
+        console.error("Error in logoutUser", error);
+        return res.json({
+            message: "Internal server error",
+            success: false
+        })
+    }
+}
+
+export { registerUser, loginUser, logoutUser };
