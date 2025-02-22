@@ -1,12 +1,11 @@
-import { useState } from 'react'
-
+import UserLogin from "./pages/Login"
+import Signup from "./pages/Signup"
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1 className='bg-green-100'>hello</h1>
+       <Signup/>
     </>
   )
 }
