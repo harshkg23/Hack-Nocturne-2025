@@ -1,7 +1,8 @@
-import { createToken, User } from "../model/user.model";
+
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import validator from "validator";
+import createToken, { User } from "../model/user.model.js";
 
 
 // Create a new user

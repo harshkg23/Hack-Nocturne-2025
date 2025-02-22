@@ -45,7 +45,7 @@ userSchema.methods.isPasswordCorrect=async function(password){
   return await bcrypt.compare(password,this.password)
 }
 
-export const createToken = (id) => {
+const createToken = (id) => {
     return jwt.sign(
       { id },
       process.env.JWT_SECRET,
@@ -54,4 +54,6 @@ export const createToken = (id) => {
   };
 
 export const User=mongoose.model("User",userSchema)
+
+export default createToken
 
