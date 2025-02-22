@@ -1,14 +1,13 @@
-import { createToken, User } from "../model/user.model.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import validator from "validator";
-import createToken, { User } from "../model/user.model.js";
+import createToken,{ User } from "../model/user.model.js";
 
 
 // Create a new user
 
 const registerUser = async (req, res) => {
-    const { email, password, fullName } = req.body;
+    const { email, password, username } = req.body;
     try {
         const exist = await User.findOne({ email });
         if (exist) {
@@ -34,14 +33,10 @@ const registerUser = async (req, res) => {
             })
         }
 
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-
-
         const user = new User({
             email,
-            password: hashedPassword,
-            fullName
+            password,
+            username
         })
 
         await user.save();
