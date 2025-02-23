@@ -10,17 +10,16 @@ import UserLogin from './pages/Login';
 
 function App() {
 
+  const url = 'http://localhost:8000'
+
   return (
-  
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Landing />} /> {/* Renders at "/" */}
-          <Route path="login" element={<UserLogin />} />
-          <Route path="signup" element={<Signup />} />
-          
-        </Route>
-      </Routes>
-   
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Landing />} /> {/* Renders at "/" */}
+        <Route path="login" element={<UserLogin url={url} />} />
+        <Route path="signup" element={<Signup url={url} />} />
+      </Route>
+    </Routes>
   );
 }
 
