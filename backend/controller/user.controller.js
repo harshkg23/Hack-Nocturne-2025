@@ -90,8 +90,8 @@ const loginUser = async (req, res) => {
         }
 
         const token = createToken(user._id);
-
-        return res.json({
+    
+         return res.json({
             message: "User logged in successfully",
             success: true,
             token
@@ -109,30 +109,29 @@ const loginUser = async (req, res) => {
 //logout user
 
 const logoutUser = async (req, res) => {
-    const { userId } = req.body;
+
+    if (!req.user || !req.user._id) {
+        return res.status(401).json({ message: "Unauthorized request" });
+    }
+
     try {
-        const user = await
-            User.findById(userId);
+        const userId = req.user._id;
+        const user = await User.findById(userId);
+
         if (!user) {
-            return res.json({
-                message: "User not found",
-                success: false
-            })
+            return res.status(404).json({ message: "User not found" });
         }
+
         user.token = null;
         await user.save();
-        return res.json({
-            message: "User logged out successfully",
-            success: true
-        })
+
+        return res.status(200).json({ message: "User logged out successfully" });
+    } catch (error) {
+        console.error("Error in logoutUser:", error);
+        return res.status(500).json({ message: "Internal server error" });
     }
-    catch (error) {
-        console.error("Error in logoutUser", error);
-        return res.json({
-            message: "Internal server error",
-            success: false
-        })
-    }
-}
+};
+
+
 
 export { registerUser, loginUser, logoutUser };

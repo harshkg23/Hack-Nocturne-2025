@@ -26,7 +26,6 @@ password:{
     required:[true,"Password is required"]
 },
 
-
 },{
     
     timestamps: true
@@ -45,13 +44,15 @@ userSchema.methods.isPasswordCorrect=async function(password){
   return await bcrypt.compare(password,this.password)
 }
 
-const createToken = (id) => {
-    return jwt.sign(
-      { id },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" } 
-    );
-  };
+const createToken = (_id) => {
+  return jwt.sign(
+    { _id },  
+    process.env.JWT_SECRET,
+    { expiresIn: "1h" } 
+  );
+};
+
+
 
 export const User=mongoose.model("User",userSchema)
 

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from './layout/Layout/Layout';
 import Signup from './pages/Signup';
 import UserLogin from './pages/Login';
+import Logout from './pages/Logout';
 
 
 function App() {
@@ -15,9 +16,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Landing />} /> {/* Renders at "/" */}
+        <Route index element={<Landing />} /> 
         <Route path="login" element={<UserLogin url={url} />} />
         <Route path="signup" element={<Signup url={url} />} />
+        <Route path="logout" element={<Logout />} />
       </Route>
     </Routes>
   );
