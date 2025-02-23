@@ -8,10 +8,13 @@ import "react-toastify/dist/ReactToastify.css";
 const UserLogin = ({ url }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const response = await fetch(`${url}/users/login`, {
         method: "POST",
@@ -22,19 +25,21 @@ const UserLogin = ({ url }) => {
       });
 
       const data = await response.json();
+      setLoading(false);
 
       if (!data.success) {
         toast.error(data.message || "Invalid credentials"); // ❌ Show error toast
         return;
       }
 
-      toast.success("Login successful! 🎉");
+      localStorage.setItem("token", data.token);
+      window.dispatchEvent(new Event("storage")); // 🔥 Notify Header.jsx to update
 
-      setTimeout(() => {
-        navigate("/dashboard"); // Redirect after a short delay
-      }, 2000);
+      toast.success("Login successful! 🎉");
+      navigate("/dashboard"); // Redirect immediately
     } catch (error) {
       console.error("Login failed:", error);
+      setLoading(false);
       toast.error("An error occurred. Please try again.");
     }
   };
@@ -76,9 +81,10 @@ const UserLogin = ({ url }) => {
           </div>
           <button
             type="submit"
-            className="w-full bg-white text-black hover:bg-gray-300 font-bold py-3 rounded-lg transition text-lg shadow-md"
+            className="w-full bg-white text-black hover:bg-gray-300 font-bold py-3 rounded-lg transition text-lg shadow-md flex justify-center items-center"
+            disabled={loading}
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
         <p className="text-gray-400 text-center mt-4">
