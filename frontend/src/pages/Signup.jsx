@@ -33,7 +33,7 @@ const Signup = ({ url }) => {
 
       
       setTimeout(() => {
-        navigate("/login");
+        navigate("/dashboard");
       }, 2000); 
     } catch (error) {
       console.error("Signup failed:", error.message);
