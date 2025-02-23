@@ -28,15 +28,15 @@ const UserLogin = ({ url }) => {
       setLoading(false);
 
       if (!data.success) {
-        toast.error(data.message || "Invalid credentials"); // ❌ Show error toast
+        toast.error(data.message || "Invalid credentials"); 
         return;
       }
 
       localStorage.setItem("token", data.token);
-      window.dispatchEvent(new Event("storage")); // 🔥 Notify Header.jsx to update
+      window.dispatchEvent(new Event("storage")); 
 
       toast.success("Login successful! 🎉");
-      navigate("/dashboard"); // Redirect immediately
+      navigate("/dashboard"); 
     } catch (error) {
       console.error("Login failed:", error);
       setLoading(false);
