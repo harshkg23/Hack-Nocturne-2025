@@ -12,6 +12,7 @@ import NewsDetail from './pages/NewsDetails/NewsDetails';
 import HotTopics from './pages/hot-topic/HotTopics';
 import TopicDetail from './pages/hot-topic/Topicdetail';
 import SoftwareTrends from './pages/softwareTrends/SoftwareTrends';
+import Logout from './pages/Logout';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Landing />} /> {/* Renders at "/" */}
+        <Route index element={<Landing />} /> 
         <Route path="login" element={<UserLogin url={url} />} />
         <Route path="signup" element={<Signup url={url} />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -30,6 +31,7 @@ function App() {
         <Route path="/hot-topics" element={<HotTopics />} />
         <Route path="/topics/:id" element={<TopicDetail />} />
         <Route path="/software-trends" element={<SoftwareTrends />} />
+        <Route path="logout" element={<Logout />} />
       </Route>
     </Routes>
   );

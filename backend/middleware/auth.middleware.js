@@ -4,8 +4,7 @@ import { User } from "../model/user.model.js";
 
 const verifyJwt = async (req, res, next) => {
     try {
-        const token =
-            req.cookies?.createToken || req.header("Authorization")?.replace("Bearer ", "");
+        const token = req.cookies.token || req.headers.authorization?.split(' ')[ 1 ];
 
         if (!token) {
             return res.status(401).json({ message: "Unauthorized request" });
@@ -13,7 +12,7 @@ const verifyJwt = async (req, res, next) => {
 
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
-        const user = await User.findById(decodedToken?._id).select("-password -refreshToken");
+        const user = await User.findById(decodedToken?._id).select("-password -token");
 
         if (!user) {
             return res.status(401).json({ message: "Invalid Access Token" });
