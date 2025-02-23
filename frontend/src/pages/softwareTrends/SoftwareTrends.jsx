@@ -41,20 +41,17 @@ const SoftwareTrends = () => {
     {
       name: "AI & Machine Learning",
       url: "https://www.tensorflow.org/",
-      description:
-        "AI-driven software and ML models are revolutionizing industries.",
+      description: "AI-driven software and ML models are revolutionizing industries.",
     },
     {
       name: "Blockchain Development",
       url: "https://ethereum.org/en/developers/",
-      description:
-        "Decentralized apps and smart contracts are trending in 2025.",
+      description: "Decentralized apps and smart contracts are trending in 2025.",
     },
     {
       name: "Web3 & Metaverse",
       url: "https://metaverse.org/",
-      description:
-        "The future of digital spaces, blending AR, VR, and blockchain.",
+      description: "The future of digital spaces, blending AR, VR, and blockchain.",
     },
     {
       name: "Cloud Computing",
@@ -64,14 +61,12 @@ const SoftwareTrends = () => {
     {
       name: "Low-Code/No-Code",
       url: "https://www.appsheet.com/",
-      description:
-        "Fast development with minimal coding—perfect for businesses.",
+      description: "Fast development with minimal coding—perfect for businesses.",
     },
     {
       name: "Cybersecurity",
       url: "https://www.cisco.com/c/en/us/products/security/",
-      description:
-        "With rising threats, security tools are more essential than ever.",
+      description: "With rising threats, security tools are more essential than ever.",
     },
     {
       name: "Quantum Computing",
@@ -91,8 +86,7 @@ const SoftwareTrends = () => {
     {
       name: "Rust Programming",
       url: "https://www.rust-lang.org/",
-      description:
-        "A safer alternative to C++ with memory safety and performance.",
+      description: "A safer alternative to C++ with memory safety and performance.",
     },
   ];
 
@@ -144,12 +138,8 @@ const SoftwareTrends = () => {
               <X className="w-6 h-6" />
             </button>
 
-            <h2 className="text-2xl font-bold text-center">
-              {selectedTrend.name}
-            </h2>
-            <p className="mt-4 text-gray-300 text-center">
-              {selectedTrend.description}
-            </p>
+            <h2 className="text-2xl font-bold text-center">{selectedTrend.name}</h2>
+            <p className="mt-4 text-gray-300 text-center">{selectedTrend.description}</p>
 
             <div className="mt-6 flex justify-center gap-4">
               <a
