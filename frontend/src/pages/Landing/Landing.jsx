@@ -1,6 +1,7 @@
 import React from "react";
 import { Github, Twitter, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Landing() {
   return (
@@ -26,13 +27,15 @@ function Landing() {
           and a thriving community.
         </motion.p>
 
-        <motion.button
-          className="mt-6 px-6 py-3 bg-gradient-to-r from-gray-200 to-gray-400 text-black font-medium rounded-md shadow-lg hover:scale-105 transition"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-        >
-          Get Started
-        </motion.button>
+        <Link to="/signup">
+          <motion.button
+            className="mt-6 px-6 py-3 bg-gradient-to-r from-gray-200 to-gray-400 text-black font-medium rounded-md shadow-lg hover:scale-105 transition"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            Get Started
+          </motion.button>
+        </Link>
       </section>
 
       {/* Features Section */}
