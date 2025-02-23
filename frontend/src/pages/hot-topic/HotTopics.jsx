@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import * as Tooltip from "@radix-ui/react-tooltip";
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, Menu } from "lucide-react";
 
 const HotTopics = () => {
   const [topics, setTopics] = useState([]);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchHotTopics = async () => {
@@ -26,7 +27,39 @@ const HotTopics = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 text-white px-6 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 text-white px-6 py-10 relative">
+      {/* Menu Bar on Right Side */}
+      <div className="absolute top-4 right-4">
+        <button
+          className="text-white text-3xl"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <Menu />
+        </button>
+        {menuOpen && (
+          <div className="absolute right-0 top-12 bg-gray-800 p-4 rounded-lg shadow-lg w-48 z-10">
+            <Link
+              to="/news"
+              className="block text-white py-2 hover:text-gray-300"
+            >
+              Technical News
+            </Link>
+            <Link
+              to="/hot-topics"
+              className="block text-white py-2 hover:text-gray-300"
+            >
+              Hot Topics
+            </Link>
+            <Link
+              to="/software-trends"
+              className="block text-white py-2 hover:text-gray-300"
+            >
+              Software Trends
+            </Link>
+          </div>
+        )}
+      </div>
+
       {/* Trending Icon and Text Together */}
       <h1 className="text-4xl font-extrabold text-center mb-10 tracking-tight flex justify-center items-center gap-3">
         <TrendingUp className="w-8 h-8 text-white" /> Hot Topics
