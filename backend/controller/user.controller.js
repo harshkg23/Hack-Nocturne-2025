@@ -4,13 +4,11 @@ import validator from "validator";
 import createToken,{ User } from "../model/user.model.js";
 
 
-// Create a new user
 
 const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // ✅ Check if all fields are provided
     if (!username || !email || !password) {
       return res.status(400).json({
         message: "All fields (username, email, password) are required!",
@@ -18,7 +16,6 @@ const registerUser = async (req, res) => {
       });
     }
 
-    // ✅ Check if user already exists
     const exist = await User.findOne({ email });
     if (exist) {
       return res.status(400).json({
@@ -27,7 +24,7 @@ const registerUser = async (req, res) => {
       });
     }
 
-    // ✅ Validate email format
+    
     if (!validator.isEmail(email)) {
       return res.status(400).json({
         message: "Invalid email format",
@@ -35,7 +32,7 @@ const registerUser = async (req, res) => {
       });
     }
 
-    // ✅ Validate password length
+    
     if (password.length < 6) {
       return res.status(400).json({
         message: "Password must be at least 6 characters",
@@ -43,11 +40,11 @@ const registerUser = async (req, res) => {
       });
     }
 
-    // ✅ Create user instance (no need to manually hash password)
+   
     const user = new User({
       username,
       email,
-      password, // This will be hashed automatically due to the pre-save middleware
+      password, 
     });
 
     await user.save();
@@ -67,7 +64,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-//login user
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
@@ -106,7 +102,6 @@ const loginUser = async (req, res) => {
 
 }
 
-//logout user
 
 const logoutUser = async (req, res) => {
 
