@@ -50,7 +50,7 @@ function Landing() {
         </Link>
       </section>
 
-      {/* Features Section */}
+      
       <section className="text-center py-16 relative z-10">
         <h3 className="text-3xl font-semibold mb-8 bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">
           Why AI DevRel?
