@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { LogIn, UserPlus, LogOut } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { LogIn, UserPlus, LogOut, LayoutDashboard } from "lucide-react";
 
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
   // Update state when localStorage changes
@@ -13,7 +14,7 @@ function Header() {
     };
 
     window.addEventListener("storage", handleStorageChange);
-    
+
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
@@ -35,15 +36,28 @@ function Header() {
       <nav>
         <ul className="flex space-x-6">
           {isLoggedIn ? (
-            <li>
-              <button
-                onClick={handleLogout}
-                className="flex items-center gap-2 p-2 bg-red-500 text-white font-medium rounded-md shadow-md hover:scale-105 transition"
-              >
-                <LogOut size={20} />
-                Logout
-              </button>
-            </li>
+            <>
+              {/* Show Dashboard button only if NOT on /dashboard */}
+              {location.pathname !== "/dashboard" && (
+                <li>
+                  <Link to="/dashboard">
+                    <button className="flex items-center gap-2 p-2 bg-blue-500 text-white font-medium rounded-md shadow-md hover:scale-105 transition">
+                      <LayoutDashboard size={20} />
+                      Dashboard
+                    </button>
+                  </Link>
+                </li>
+              )}
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 p-2 bg-red-500 text-white font-medium rounded-md shadow-md hover:scale-105 transition"
+                >
+                  <LogOut size={20} />
+                  Logout
+                </button>
+              </li>
+            </>
           ) : (
             <>
               <li>
