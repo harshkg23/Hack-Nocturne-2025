@@ -18,7 +18,7 @@ function Landing() {
         }}
       />
 
-      {/* Hero Section */}
+      
       <section className="text-center py-24 px-6 relative z-10">
         <motion.h2
           className="text-5xl font-bold mb-4 bg-gradient-to-r from-gray-100 to-gray-400 bg-clip-text text-transparent max-w-3xl mx-auto"
