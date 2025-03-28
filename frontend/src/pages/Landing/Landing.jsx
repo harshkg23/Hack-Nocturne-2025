@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Landing() {
   return (
     <div className="relative bg-gradient-to-b from-black to-gray-900 text-white min-h-screen overflow-hidden">
-      {/* Faded Grid Background */}
+      
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
