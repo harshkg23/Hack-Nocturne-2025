@@ -1,4 +1,10 @@
-# Hack-Nocturne-2025
+# Hack-Nocturne-2025 - AI Devrel System
+
+"Empowering Companies with AI-Driven Social Media Intelligence for DevRel"
+- Companies struggle to understand public sentiment and trending topics across social media platforms, impacting decision-making and brand management.
+- We built multiple models per company like DistilBERT, BERTopic, BERT-based Clustering, GPT-4, NER Models to classify social media posts. The data was scraped, cleaned, and fine-tuned for multi-label categorization, ensuring efficient and accurate classification. 
+- The solution automates social media analysis, providing real-time insights to help companies prioritize features, address complaints, and track competition.
+- Unlike generic sentiment analysis, our company-specific models ensure precise categorization, offering deeper insights and real-time tracking for better decision-making.
 
 # Frontend
 
