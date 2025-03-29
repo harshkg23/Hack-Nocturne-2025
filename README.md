@@ -19,11 +19,13 @@ This folder contains the frontend code for the Hack-Nocturne-2025 project. It is
 ## Setup
 
 1. Navigate to the `frontend` folder:
+
    ```sh
    cd frontend
    ```
 
 2. Install the dependencies:
+
    ```sh
    npm install
    ```
@@ -54,11 +56,13 @@ This folder contains the backend code for the Hack-Nocturne-2025 project. It is 
 ## Setup
 
 1. Navigate to the `backend` folder:
+
    ```sh
    cd backend
    ```
 
 2. Install the dependencies:
+
    ```sh
    npm install
    ```
@@ -68,6 +72,18 @@ This folder contains the backend code for the Hack-Nocturne-2025 project. It is 
    node index.js
    ```
    This will start the backend server, and you can access the API at `http://localhost:5000`.
+
+
+
+
+# Machine Learning
+This folder contains the machine learning code and models for Hack-Nocturne-2025. It leverages advanced NLP and ML techniques to provide insightful analytics and predictions.
+
+ML Model:
+DistilBERT, BERTopic, BERT-based Clustering, GPT-4, NER Models
+
+ML Tech Stack:
+PyTorch, Matplotlib, Seaborn, NumPy, Scikit-Learn, spaCy, HuggingFace, Flask, NLTK
 
 # Contributing
 
