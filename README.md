@@ -16,6 +16,13 @@ This folder contains the frontend code for the Hack-Nocturne-2025 project. It is
 - Node.js (v16 or higher)
 - npm or yarn
 
+## Tech Stack
+
+- React
+- Vite
+- Tailwind CSS
+
+
 ## Setup
 
 1. Navigate to the `frontend` folder:
@@ -52,6 +59,14 @@ This folder contains the backend code for the Hack-Nocturne-2025 project. It is 
 
 - Node.js (v16 or higher)
 - npm
+
+## Tech Stack
+ - Node.js
+ - Express
+ - MongoDB
+ - Mongoose
+ - JWT (JSON Web Tokens)
+ - Cors (for cross-origin resource sharing)
 
 ## Setup
 
