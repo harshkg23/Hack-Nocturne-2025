@@ -10,7 +10,7 @@ import Logout from "./pages/Logout";
 import ProtectedRoute from "../ProtectedRoute.jsx";
 
 function App() {
-  const url = "http://localhost:8000";
+  const url = "https://aidevrel.onrender.com";
 
   return (
     <Routes>
