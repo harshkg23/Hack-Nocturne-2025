@@ -110,6 +110,13 @@ We welcome contributions to the Hack-Nocturne-2025 project! Please follow these 
 4. Push your branch to your forked repository.
 5. Create a pull request to the main repository.
 
+# Contributors  
+
+- [Inchara J](https://github.com/Incharajayaram)  
+- [Zrahay](https://github.com/zrahay)  
+- [Harsh K G](https://github.com/harshkg23)  
+- [Himanshu](https://github.com/himanshu3141)  
+
 # License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
