@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Menu, Newspaper, Flame, Code } from "lucide-react";
 
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY; // Ensure this is set in your environment
 
 const TechnicalNews = () => {
   const [news, setNews] = useState([]);
-  const [menuOpen, setMenuOpen] = useState(false); // State for menu toggle
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -28,52 +26,16 @@ const TechnicalNews = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 text-white px-6 py-10 relative">
-      {/* Top Bar with Menu */}
-      <div className="flex items-center justify-between mb-6 px-4 relative z-50">
+    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 text-white px-6 py-10">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6 px-4">
         <h1 className="text-4xl font-extrabold tracking-tight">
           📰 Latest Tech News
         </h1>
-
-        {/* Hamburger Menu */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-white p-2 rounded-md focus:outline-none hover:bg-gray-800"
-        >
-          <Menu size={32} />
-        </button>
       </div>
 
-      {/* Dropdown Menu (Now Fully Visible) */}
-      {menuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          className="absolute top-16 right-4 bg-gray-900 border border-gray-700 rounded-xl shadow-lg w-64 z-50"
-        >
-          <ul className="flex flex-col">
-            <Link to="/news" className="menu-item">
-              <li className="flex items-center gap-3 px-5 py-3 hover:bg-gray-800 rounded-t-xl">
-                <Newspaper size={24} /> Technical News
-              </li>
-            </Link>
-            <Link to="/hot-topics" className="menu-item">
-              <li className="flex items-center gap-3 px-5 py-3 hover:bg-gray-800">
-                <Flame size={24} /> Hot Topics
-              </li>
-            </Link>
-            <Link to="/software-trends" className="menu-item">
-              <li className="flex items-center gap-3 px-5 py-3 hover:bg-gray-800 rounded-b-xl">
-                <Code size={24} /> Software Trends
-              </li>
-            </Link>
-          </ul>
-        </motion.div>
-      )}
-
       {/* News Grid */}
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto relative z-0">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {news.map((article, index) => (
           <motion.div
             key={index}

@@ -6,9 +6,6 @@ import UserLogin from "./pages/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import TechnicalNews from "./pages/technical-news/TechnicalNews";
 import NewsDetail from "./pages/NewsDetails/NewsDetails";
-import HotTopics from "./pages/hot-topic/HotTopics";
-import TopicDetail from "./pages/hot-topic/Topicdetail";
-import SoftwareTrends from "./pages/softwareTrends/SoftwareTrends";
 import Logout from "./pages/Logout";
 import ProtectedRoute from "../ProtectedRoute.jsx";
 
@@ -27,9 +24,6 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="news" element={<TechnicalNews />} />
           <Route path="news/:id" element={<NewsDetail />} />
-          <Route path="hot-topics" element={<HotTopics />} />
-          <Route path="topics/:id" element={<TopicDetail />} />
-          <Route path="software-trends" element={<SoftwareTrends />} />
           <Route path="logout" element={<Logout />} />
         </Route>
       </Route>
